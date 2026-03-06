@@ -89,14 +89,24 @@ make_variance_tibble <- function(pca_ve, pca_results) {
 #' @export
 #'
 #' @examples
-#make_biplot <- function(metadata, pca_results) {
-#  metadata <- read.csv(metadata, row.names = 18)
-#  metadata <- metadata[rownames(pca_results$x), ]
-#  result <- autoplot(pca_results, data = metadata, 
-#                     colour = "SixSubtypesClassification")
-  
-#  return(result)
-#}
+make_biplot <- function(metadata, pca_results) {
+  metadata <- read.csv(metadata, row.names = 18)
+  metadata <- metadata[rownames(pca_results$x), ]
+
+  # Extract PC scores
+  pca_df <- as.data.frame(pca_results$x)
+
+  # Combine PCA results with metadata
+  plot_df <- cbind(pca_df, metadata)
+
+  result <- ggplot2::ggplot(plot_df,
+                          ggplot2::aes(x = PC1, y = PC2,
+                                       color = SixSubtypesClassification)) +
+  ggplot2::geom_point() +
+  ggplot2::labs(x = "PC1", y = "PC2", color = "SixSubtypesClassification")
+
+return(result)
+}
 
 #plot <- make_biplot("data/proj_metadata.csv", pca_results)
 
