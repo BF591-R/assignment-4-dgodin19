@@ -30,8 +30,8 @@ read_data <- function(intensity_data, delimiter) {
   return(result)
 }
 
-data <- read_data("data/example_intensity_data.csv", delimiter = " ")
-pca_results <- prcomp(scale(t(data)), scale=FALSE, center=FALSE)
+#data <- read_data("data/example_intensity_data.csv", delimiter = " ")
+#pca_results <- prcomp(scale(t(data)), scale=FALSE, center=FALSE)
 
 #' Define a function to calculate the proportion of variance explained by each PC
 #'
@@ -48,7 +48,7 @@ calculate_variance_explained <- function(pca_results) {
     return(result)
 }
 
-pca_ve <- calculate_variance_explained(pca_results)
+#pca_ve <- calculate_variance_explained(pca_results)
 
 #' Define a function that takes in the variance values and the PCA results to
 #' make a tibble with PC names, variance explained by each PC, and the
@@ -76,7 +76,7 @@ make_variance_tibble <- function(pca_ve, pca_results) {
   return(result)
 }
 
-variance_tibble <- make_variance_tibble(pca_ve, pca_results)
+#variance_tibble <- make_variance_tibble(pca_ve, pca_results)
 
 #' Define a function to create a biplot of PC1 vs. PC2 labeled by
 #' SixSubTypesClassification
@@ -98,7 +98,7 @@ variance_tibble <- make_variance_tibble(pca_ve, pca_results)
 #  return(result)
 #}
 
-plot <- make_biplot("data/proj_metadata.csv", pca_results)
+#plot <- make_biplot("data/proj_metadata.csv", pca_results)
 
 #' Define a function to return a list of probeids filtered by signifiance
 #'
