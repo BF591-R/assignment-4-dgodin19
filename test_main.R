@@ -23,6 +23,7 @@ describe("read_data()", {
   })
 })
 
+
 describe("calculate_variance()", {
   test_obj <- list(sdev = c(8,4,2))
   test_res <- c(0.76190476, 0.19047619, .04761905)
