@@ -1,3 +1,4 @@
+#install.packages("ggfortify")
 library('tidyverse')
 library('RColorBrewer')
 library('ggfortify')
@@ -13,15 +14,22 @@ library('ggfortify')
 #' @export
 #'
 #' @examples
+#read_data <- function(intensity_data, delimiter) {
+#  lines <- readLines(intensity_data)
+#  lines[1] <- paste0(" ", lines[1])
+#  result <- read_delim(I(lines), delim = delimiter, col_names = TRUE)
+#  result <- column_to_rownames(result, var = names(result)[1])
+#  result <- as.data.frame(result)
+#  return(result)
+# }
+
 read_data <- function(intensity_data, delimiter) {
-  lines <- readLines(intensity_data)
-  lines[1] <- paste0(" ", lines[1])
-  result <- read_delim(I(lines), delim = delimiter, col_names = TRUE)
-  result <- column_to_rownames(result, var = names(result)[1])
-  #result <- rownames_to_column(result, var = "gene_ids")
-  result <- as.data.frame(result)
+  result <- read.table(file = intensity_data, sep = delimiter,
+    header = TRUE, stringsAsFactors = FALSE, check.names = FALSE
+  )
   return(result)
 }
+
 data <- read_data("data/example_intensity_data.csv", delimiter = " ")
 pca_results <- prcomp(scale(t(data)), scale=FALSE, center=FALSE)
 
