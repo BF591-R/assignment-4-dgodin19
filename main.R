@@ -1,7 +1,7 @@
 #install.packages("ggfortify")
 library('tidyverse')
 library('RColorBrewer')
-library('ggfortify')
+#library('ggfortify')
 
 #' Read the expression data "csv" file as a dataframe, not tibble
 #'
@@ -89,14 +89,14 @@ variance_tibble <- make_variance_tibble(pca_ve, pca_results)
 #' @export
 #'
 #' @examples
-make_biplot <- function(metadata, pca_results) {
-  metadata <- read.csv(metadata, row.names = 18)
-  metadata <- metadata[rownames(pca_results$x), ]
-  result <- autoplot(pca_results, data = metadata, 
-                     colour = "SixSubtypesClassification")
+#make_biplot <- function(metadata, pca_results) {
+#  metadata <- read.csv(metadata, row.names = 18)
+#  metadata <- metadata[rownames(pca_results$x), ]
+#  result <- autoplot(pca_results, data = metadata, 
+#                     colour = "SixSubtypesClassification")
   
-  return(result)
-}
+#  return(result)
+#}
 
 plot <- make_biplot("data/proj_metadata.csv", pca_results)
 
